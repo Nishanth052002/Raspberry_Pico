@@ -1,10 +1,8 @@
-
 #include "pico/stdlib.h"
 #include <stdio.h>
 
 bool timer_callback(struct repeating_timer *t) {
-    printf("Timer fired under load!
-");
+    printf("Timer fired under load!");
     return true;
 }
 

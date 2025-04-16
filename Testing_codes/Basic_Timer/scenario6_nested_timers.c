@@ -3,12 +3,12 @@
 #include <stdio.h>
 
 int64_t nested_timer_callback(alarm_id_t id, void *user_data) {
-    printf("🔁 [Nested Timer] Second timer triggered!\n");
+    printf("[Nested Timer] Second timer triggered!\n");
     return 0;
 }
 
 int64_t first_timer_callback(alarm_id_t id, void *user_data) {
-    printf("🕒 [Nested Timer] First timer triggered. Scheduling second...\n");
+    printf("[Nested Timer] First timer triggered. Scheduling second...\n");
     add_alarm_in_ms(2000, nested_timer_callback, NULL, true);
     return 0;
 }

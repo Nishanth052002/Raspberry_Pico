@@ -1,4 +1,3 @@
-
 #include "pico/stdlib.h"
 #include "pico/multicore.h"
 #include <stdio.h>
@@ -14,8 +13,7 @@ bool timer_callback(struct repeating_timer *t) {
 void core1_entry() {
     while (1) {
         if (trigger) {
-            printf("Core 1 received trigger!
-");
+            printf("Core 1 received trigger!");
             trigger = false;
         }
     }

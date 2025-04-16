@@ -10,7 +10,7 @@ int main() {
     sleep_ms(100);  // Simulated task
     uint64_t end = time_us_64();
 
-    printf("⏱️ [Precision Test] Elapsed time: %llu us (Expected ~100000 us)\n", end - start);
+    printf("[Precision Test] Elapsed time: %llu us (Expected ~100000 us)\n", end - start);
     while (1) {
         tight_loop_contents();
     }

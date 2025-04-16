@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 int64_t zero_delay_callback(alarm_id_t id, void *user_data) {
-    printf("⚠️ [Edge Case] Zero-delay alarm triggered!\n");
+    printf("[Edge Case] Zero-delay alarm triggered!\n");
     return 0;
 }
 
@@ -16,7 +16,7 @@ int main() {
 
     // Try to cancel an invalid timer
     bool result = cancel_alarm((alarm_id_t)999);
-    printf("❌ [Edge Case] Cancel result for invalid ID: %s\n", result ? "Success" : "Failure");
+    printf("[Edge Case] Cancel result for invalid ID: %s\n", result ? "Success" : "Failure");
 
     while (1) {
         tight_loop_contents();

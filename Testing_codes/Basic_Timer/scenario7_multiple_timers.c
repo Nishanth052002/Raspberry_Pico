@@ -3,12 +3,12 @@
 #include <stdio.h>
 
 bool timer1_callback(struct repeating_timer *t) {
-    printf("🔄 [Timer1 - 1000ms] Tick\n");
+    printf("[Timer1 - 1000ms] Tick\n");
     return true;
 }
 
 bool timer2_callback(struct repeating_timer *t) {
-    printf("🔄 [Timer2 - 500ms] Tick\n");
+    printf("[Timer2 - 500ms] Tick\n");
     return true;
 }
 

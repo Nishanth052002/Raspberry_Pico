@@ -6,7 +6,7 @@
 void core1_entry() {
     while (1) {
         sleep_ms(3000);
-        printf("🧠 [Core 1] Running independently every 3 seconds\n");
+        printf("[Core 1] Running independently every 3 seconds\n");
     }
 }
 
@@ -17,7 +17,7 @@ int main() {
     multicore_launch_core1(core1_entry);
 
     while (1) {
-        printf("🧠 [Core 0] Main loop...\n");
+        printf("[Core 0] Main loop...\n");
         sleep_ms(1000);
     }
 }

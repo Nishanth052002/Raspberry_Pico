@@ -1,4 +1,3 @@
-
 #include "pico/stdlib.h"
 #include <stdio.h>
 
@@ -7,12 +6,9 @@ enum State current_state = IDLE;
 
 bool state_timer(struct repeating_timer *t) {
     switch (current_state) {
-        case IDLE:    printf("State: IDLE -> RUNNING
-"); current_state = RUNNING; break;
-        case RUNNING: printf("State: RUNNING -> DONE
-"); current_state = DONE; break;
-        case DONE:    printf("State: DONE -> IDLE
-"); current_state = IDLE; break;
+        case IDLE:    printf("State: IDLE -> RUNNING"); current_state = RUNNING; break;
+        case RUNNING: printf("State: RUNNING -> DONE"); current_state = DONE; break;
+        case DONE:    printf("State: DONE -> IDLE"); current_state = IDLE; break;
     }
     return true;
 }
