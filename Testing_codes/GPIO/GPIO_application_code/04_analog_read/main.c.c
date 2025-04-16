@@ -3,7 +3,7 @@
  * Description: Reads analog voltage on GPIO 26 (ADC0) and prints the raw value.
  */
 #include "pico/stdlib.h"
-#include "hardware/adc.h"
+#include "hardware/adc.h" //Add it in CMakeLists.txt under target_link_libraries.
 #include <stdio.h>
 
 int main() {
