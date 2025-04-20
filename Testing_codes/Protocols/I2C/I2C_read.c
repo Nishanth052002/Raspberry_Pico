@@ -1,6 +1,5 @@
 /*
- * Example 1: Basic I2C read from ADXL345 (Raw Acceleration Data)
- * Reads raw acceleration data from registers 0x32 to 0x37.
+ * Example: Read raw acceleration data from ADXL345 (with init)
  */
 #include "pico/stdlib.h"
 #include "hardware/i2c.h"
@@ -11,6 +10,12 @@
 #define SCL_PIN 5
 #define ADXL345_ADDR 0x53
 
+void adxl345_init() {
+    // Enable measurement mode by writing 0x08 to POWER_CTL (0x2D)
+    uint8_t config[] = {0x2D, 0x08};
+    i2c_write_blocking(I2C_PORT, ADXL345_ADDR, config, 2, false);
+}
+
 int main() {
     stdio_init_all();
     i2c_init(I2C_PORT, 100 * 1000);
@@ -18,6 +23,11 @@ int main() {
     gpio_set_function(SCL_PIN, GPIO_FUNC_I2C);
     gpio_pull_up(SDA_PIN);
     gpio_pull_up(SCL_PIN);
+
+    sleep_ms(2000); // Wait for USB to be ready
+    printf("Initializing ADXL345...\n");
+
+    adxl345_init();
 
     uint8_t reg = 0x32;
     uint8_t data[6];
