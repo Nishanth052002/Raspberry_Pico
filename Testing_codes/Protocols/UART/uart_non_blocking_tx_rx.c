@@ -7,12 +7,12 @@
 #include "pico/stdlib.h"
 #include "hardware/uart.h"
 
-#define UART_ID uart0
+#define UART_ID uart1
 
 int main() {
     uart_init(UART_ID, 115200);
-    gpio_set_function(0, GPIO_FUNC_UART);
-    gpio_set_function(1, GPIO_FUNC_UART);
+    gpio_set_function(4, GPIO_FUNC_UART);
+    gpio_set_function(5, GPIO_FUNC_UART);
 
     while (true) {
         if (uart_is_writable(UART_ID)) {

@@ -9,12 +9,12 @@
 #define UART_ID uart1
 
 int main() {
-    uart_init(UART_ID, 19200);
+    uart_init(UART_ID, 115200);
     gpio_set_function(4, GPIO_FUNC_UART); // TX
     gpio_set_function(5, GPIO_FUNC_UART); // RX
 
     uart_set_hw_flow(UART_ID, false, false);
-    uart_set_format(UART_ID, 7, 2, UART_PARITY_EVEN);
+    uart_set_format(UART_ID, 7, 2, UART_PARITY_EVEN); // 7 data bits, 2 stop bits, even parity
     uart_puts(UART_ID, "Custom UART config\n");
 
     while (true) {
