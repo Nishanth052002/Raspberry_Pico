@@ -4,7 +4,9 @@
  */
 #include "pico/stdlib.h"
 #include "hardware/dma.h"
+#include "pico/stdio_usb.h"
 #include "hardware/uart.h"
+#include <stdio.h>
 
 #define UART_ID uart0
 #define UART_TX_PIN 0
@@ -16,6 +18,10 @@ int main() {
 
     uart_init(UART_ID, 115200);
     gpio_set_function(UART_TX_PIN, GPIO_FUNC_UART);
+
+    while (!stdio_usb_connected()) {
+        sleep_ms(1000);
+    }
 
     int dma_chan = dma_claim_unused_channel(true);
     dma_channel_config cfg = dma_channel_get_default_config(dma_chan);

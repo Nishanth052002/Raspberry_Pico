@@ -5,14 +5,22 @@
 #include "pico/stdlib.h"
 #include "hardware/dma.h"
 #include "hardware/sync.h"
+#include <stdio.h>
 
 #define SIZE 32
 
 int main() {
     stdio_init_all();
-
+    // Wait for the USB to be connected and ready
+    while (!stdio_usb_connected()) {
+        sleep_ms(500);
+    }
     uint8_t src[SIZE], dst[SIZE];
-    for (int i = 0; i < SIZE; i++) src[i] = i;
+    for (int i = 0; i < SIZE; i++) {
+        //printf("Hello John...\n");
+        //sleep_ms(2000);  // Wait 2 seconds
+        src[i] = i;
+    }
 
     int dma_chan = dma_claim_unused_channel(true);
     dma_channel_config c = dma_channel_get_default_config(dma_chan);
@@ -34,8 +42,11 @@ int main() {
     printf("Memory copy complete!\n");
     for (int i = 0; i < SIZE; i++) {
         printf("%d ", dst[i]);
+        //printf("Memory copy complete!\n");
     }
     printf("\n");
 
-    while (1);
+    while (1){
+        //printf("Hello John...\n");
+    }
 }
